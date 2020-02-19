@@ -11,6 +11,7 @@ class Car extends Model
         'description',
         'price',
         'likes',
+        'status',
         'nop',
         'image',
         'category_id',

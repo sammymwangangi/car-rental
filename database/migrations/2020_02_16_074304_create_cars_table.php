@@ -23,6 +23,7 @@ class CreateCarsTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->bigInteger('brand_id')->unsigned();
             $table->unsignedBigInteger('likes')->default(0);
+            $table->unsignedBigInteger('status')->default(0);
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('like_id')->references('id')->on('likes')->onDelete('cascade')->onUpdate('cascade');

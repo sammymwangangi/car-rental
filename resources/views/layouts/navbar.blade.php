@@ -17,10 +17,10 @@
                     <a class="nav-link" href="#"><i class="fa fa-globe"></i> ABOUT</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{{ route('cars.index') }}"><i class="fa fa-car"></i>CARS</a>
+                <a class="nav-link" href="{{ route('cars.index') }}"><i class="fa fa-car"></i> CARS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link uppercase" href="#"><i class="fa fa-phone"></i>CONTACT US</a>
+                    <a class="nav-link uppercase" href="#"><i class="fa fa-phone"></i> CONTACT US</a>
                 </li>
             </ul>
 

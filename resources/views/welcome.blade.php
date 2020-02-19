@@ -7,6 +7,7 @@
                 <div class="col-6" style="color: cornsilk">
                     <h6>Feugiat tortor mauris, vitae magna parturient nec, velit bibensectetuer eros urna nunc suspendisse</h6>
                     <h1 class="display-4">Upto 25% off on first booking through your app</h1>
+                    <a href="{{route('cars.index')}}" class="btn btn-primary btn-lg" role="button">Browse Cars</a>
                 </div>
                 <div class="col-6">
                     <div class="card" style="width: 38rem;">
@@ -82,7 +83,7 @@
                 </h4>
             </div>
             <div class="col-4">
-                <img src="{{asset ('images/car2.png')}}" alt="car">
+                <img src="{{asset ('images/car2.png')}}" class="img-fluid" alt="car">
             </div>
         </div>
     </div>

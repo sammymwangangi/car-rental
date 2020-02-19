@@ -1,5 +1,5 @@
 <template>
-    <i class="btn fa fa-heart-o fa-2x text-danger" @click="handleClick"> {{dataLikes}}</i>
+    <i class="btn fa fa-heart-o fa-2x text-danger" @click="handleClick"> <sup><small> {{dataLikes}}</small></sup></i>
 </template>
 
 <script>
