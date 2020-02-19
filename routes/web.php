@@ -15,6 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::resource('cars', 'CarController');
+Route::get('cars', 'CarController@index')->name('cars.index');
+Route::patch('cars/{car}', 'CarController@updateLikes')->name('cars.updateLikes');
+Route::resource('brands', 'BrandController');
+Route::resource('categories', 'CategoryController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
