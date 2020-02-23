@@ -17,10 +17,12 @@ Route::get('/', function () {
 
 // Route::resource('cars', 'CarController');
 Route::get('cars', 'CarController@index')->name('cars.index');
+Route::get('/', 'CarController@getCars')->name('cars.getCars');
 Route::get('cars/{car}', 'CarController@show')->name('cars.show');
 Route::patch('cars/{car}', 'CarController@updateLikes')->name('cars.updateLikes');
 Route::resource('brands', 'BrandController');
 Route::resource('categories', 'CategoryController');
+Route::resource('bookings', 'BookingController');
 
 Auth::routes();
 

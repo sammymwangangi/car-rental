@@ -41594,7 +41594,7 @@ var render = function() {
   return _c(
     "i",
     {
-      staticClass: "btn fa fa-heart-o fa-2x text-danger",
+      staticClass: "fa fa-heart fa-2x text-danger",
       on: { click: _vm.handleClick }
     },
     [_c("sup", [_c("small", [_vm._v(" " + _vm._s(_vm.dataLikes))])])]
@@ -53776,9 +53776,6 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-// require('@coreui/coreui');
-__webpack_require__(/*! perfect-scrollbar */ "./node_modules/perfect-scrollbar/dist/perfect-scrollbar.esm.js");
-
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");

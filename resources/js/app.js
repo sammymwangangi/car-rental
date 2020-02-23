@@ -4,8 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-// require('@coreui/coreui');
-require('perfect-scrollbar');
+
 require('./bootstrap');
 
 window.Vue = require('vue');

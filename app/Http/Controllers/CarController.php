@@ -18,6 +18,11 @@ class CarController extends Controller
         $cars = Car::all();
         return view('cars.index', compact('cars'));
     }
+    public function getCars()
+    {
+        $cars = Car::paginate(3);
+        return view('welcome', compact('cars'));
+    }
 
     /**
      * Show the form for creating a new resource.
