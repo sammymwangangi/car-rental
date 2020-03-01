@@ -48,25 +48,52 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'car_id' => 'required',
-            'user_id' => 'required',
+        // $validator = Validator::make($request->all(), [
+        //     'car_id' => 'required',
+        //     'user_id' => 'required',
+        //     'pickup_loc' => 'required',
+        //     'drop_loc' => 'required',
+        //     'pickup_date' => 'required',
+        //     'pickup_time' => 'required',
+        //     'drop_date' => 'required',
+        //     'drop_time' => 'required',
+        // ]);
+        // if ($validator->fails()) {
+        //     return redirect()->back()->with('error', 'Whoops! An error occured during sign in, fill all required fields!');
+        // }
+        // try {
+        //     Booking::create(array_merge($request->all()));
+        //     return redirect()->back()->with('success', 'Car has been booked successfully');
+        // } catch (\Exception $exception) {
+        //     return redirect()->back()->with('error', 'Whoops!, Something went wrong during submission, Please try again.');
+        // }
+
+        // $r = request();
+    	$this->validate($request, [
+
+    		'car_id' => 'required',
             'pickup_loc' => 'required',
             'drop_loc' => 'required',
             'pickup_date' => 'required',
             'pickup_time' => 'required',
             'drop_date' => 'required',
             'drop_time' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return redirect()->back()->with('error', 'Whoops! An error occured during sign in, fill all required fields!');
-        }
-        try {
-            Booking::create(array_merge($request->all()));
-            return redirect()->back()->with('success', 'Car has been booked successfully');
-        } catch (\Exception $exception) {
-            return redirect()->back()->with('error', 'Whoops!, Something went wrong during submission, Please try again.');
-        }
+    	]);
+
+    	$car = Car::create([
+    		'car_id' => $request->car_id,
+    		'pickup_loc' => $request->pickup_loc,
+    		'drop_loc' => $request->drop_loc,
+    		'pickup_date' => $request->pickup_date,
+    		'pickup_time' => $request->pickup_time,
+    		'drop_date' => $request->drop_date,
+    		'drop_time' => $request->drop_time,
+    		'user_id' => Auth::id(),
+
+    	]);
+
+        // return redirect()->route('discussion', ['slug' => $discussion->slug ]);
+        return redirect('/bookings')->with('success', 'Car has been booked successfully');
     }
 
     /**

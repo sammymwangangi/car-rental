@@ -119,7 +119,7 @@
                     </div>
                 <div class="card-body">
                     <h2 class="text-center card-title">KSH.{{$car->price}}<small>/day</small></h2>
-                <h5 class="text-center card-title text-info"><a href="{{route('cars.show', $car->id)}}">{{$car->name}}</a></h5>
+                <h5 class="text-center card-title text-info"><a href="{{url('/cars/'.$car->id)}}">{{$car->name}}</a></h5>
                     <p class="card-text">{{str_limit($car ->description, $limit = 100, $end = '...')}}</p>
                 </div>
                 <div class=" d-flex border-0 justify-content-around card-footer">
@@ -130,7 +130,7 @@
                 <div class=" d-flex justify-content-between card-footer">
                     <small class="mt-2 text-muted"><i class="fa fa-clock"></i>Uploaded at {{$car->created_at}}</small>
                     @if($car->status == 1)
-                        <a class="btn btn-sm btn-outline-success" href="{{route('cars.show', $car->id)}}">Book <i class="icon-arrow-right"></i></a>
+                        <a class="btn btn-sm btn-outline-success" href="{{url('/cars/'.$car->id)}}">Book <i class="icon-arrow-right"></i></a>
                     @else
                         <button class="btn btn-sm btn-outline-danger"><i class="fa fa-times fa-1x"></i> Not Available </button>
                     @endif

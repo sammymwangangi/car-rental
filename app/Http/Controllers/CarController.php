@@ -54,7 +54,13 @@ class CarController extends Controller
             return redirect()->back()->with('error', 'Whoops! An error occured during sign in, fill all required fields!');
         }
         try {
-            Car::create(array_merge($request->all()));
+            $car = Car::create(array_merge($request->all()));
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                $request->image->move('images', $fileName);
+                $car->update(['image' => $fileName]);
+            }
             return redirect()->back()->with('success', 'Car has been created');
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Whoops!, Something went wrong during submission, Please try again.');
@@ -95,7 +101,21 @@ class CarController extends Controller
     {
         Car::findOrFail($id)->update(array_merge($request->except(['id'])));
         return redirect()->back()->with('info','Car has been updated!');
+        try {
+            $car = Car::find($id);
+            $car->update(array_merge($request->all()));
+            if ($request->hasFile('image')) {
+                $file = $request->file('image');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                $request->image->move('images', $fileName);
+                $car->update(['image' => $fileName]);
+            }
+            return redirect()->back()->with('info','Car has been updated!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'An error occured during updating the car!');
+        }
     }
+
     public function updateLikes(Request $request, Car $car)
     {
         $car->likes = $request->likes;

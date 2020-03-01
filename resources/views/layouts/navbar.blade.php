@@ -22,6 +22,9 @@
                 <li class="nav-item">
                     <a class="nav-link uppercase" href="#"><i class="fa fa-phone"></i> CONTACT US</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link uppercase" href="{{ url('/dashboard') }}"><i class="fa fa-th-large"></i> DASHBOARD</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
