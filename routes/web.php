@@ -17,14 +17,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::resource('cars', 'CarController');
-Route::get('cars', 'CarController@index')->name('cars.index');
+Route::resource('cars', 'CarController');
+// Route::get('cars', 'CarController@index')->name('cars.index');
 Route::get('/', 'CarController@getCars')->name('cars.getCars');
-Route::get('cars/{car}', 'CarController@show')->name('cars');
-Route::get('cars/{car}', 'CarController@edit')->name('cars.edit');
+// Route::get('cars/{car}', 'CarController@show')->name('cars.show');
+// Route::get('cars/{car}', 'CarController@edit')->name('cars.edit');
 Route::patch('cars/{car}', 'CarController@updateLikes')->name('cars.updateLikes');
-Route::patch('cars/{car}', 'CarController@update')->name('cars.update');
-Route::post('cars', 'CarController@store')->name('cars.store');
+// Route::patch('cars/{car}', 'CarController@update')->name('cars.update');
+// Route::post('cars', 'CarController@store')->name('cars.store');
 Route::resource('brands', 'BrandController');
 Route::resource('categories', 'CategoryController');
 Route::resource('bookings', 'BookingController');
