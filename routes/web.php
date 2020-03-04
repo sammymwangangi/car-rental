@@ -12,10 +12,17 @@
 */
 
 use App\Http\Controllers\AdminController;
+use Illuminate\Routing\RouteGroup;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('about', function () {
+    return view('about');
+});
+
+Route::get('contact', 'ContactController@show');
 
 Route::resource('cars', 'CarController');
 // Route::get('cars', 'CarController@index')->name('cars.index');
