@@ -23,6 +23,7 @@ class CreateBookingsTable extends Migration
             $table->date('pickup_date');
             $table->time('drop_time');
             $table->date('drop_date');
+            $table->boolean('confirmed');
             $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

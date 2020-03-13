@@ -26,19 +26,13 @@ Route::get('/contact', 'ContactController@index')->name('contact.index');
 Route::post('/contact', 'ContactController@store')->name('contact.store');
 
 Route::resource('cars', 'CarController');
-// Route::get('cars', 'CarController@index')->name('cars.index');
+Route::post('import', 'CarController@import')->name('car.import');
+Route::get('export', 'CarController@export')->name('car.export');
 Route::get('/', 'CarController@getCars')->name('cars.getCars');
-// Route::get('cars/{car}', 'CarController@show')->name('cars.show');
-// Route::get('cars/{car}', 'CarController@edit')->name('cars.edit');
 Route::patch('cars/{car}', 'CarController@updateLikes')->name('cars.updateLikes');
-// Route::patch('cars/{car}', 'CarController@update')->name('cars.update');
-// Route::post('cars', 'CarController@store')->name('cars.store');
 Route::resource('brands', 'BrandController');
 Route::resource('categories', 'CategoryController');
 Route::resource('bookings', 'BookingController');
-// Route::get('bookings', 'BookingController@index')->name('bookings.index');
-// Route::post('bookings', 'BookingController@store')->name('bookings.store');
-// Route::resource('dashboard', 'AdminController');
 Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
 
 Route::get('dashboard/cars', 'AdminController@getCars')->name('dashboard.cars');

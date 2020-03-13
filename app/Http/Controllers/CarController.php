@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Car;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Exports\ExportCars;
+use App\Imports\ImportCars;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CarController extends Controller
 {
@@ -140,5 +143,23 @@ class CarController extends Controller
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', 'Whoops!, Something went wrong during deletion, Please try again.');
         }
+    }
+
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function export() 
+    {
+        return Excel::download(new ExportCars, 'cars.xlsx');
+    }
+    
+    /**
+    * @return \Illuminate\Support\Collection
+    */
+    public function import() 
+    {
+        Excel::import(new ImportCars, request()->file('file'));
+            
+        return back();
     }
 }

@@ -28,11 +28,22 @@
             @include('partials.car-modal')
         </div>
         <div class="col pb-2">
-            <button class="btn btn-success" data-toggle="modal" data-target="#importModal">
-                <span><i class="fa fa-file-excel-o fa-1x"></i> Import Cars</span>
-            </button>
+            {{-- <button class="btn btn-success" data-toggle="modal" data-target="#importModal">
+                <span><i class="fa fa-file-excel-o fa-1x"></i> Export Cars</span>
+            </button> --}}
+
+            <form action="{{ route('car.import') }}" method="POST" name="importform"
+               enctype="multipart/form-data">
+                @csrf
+                {{-- <input type="file" name="file" class="form-control-file">
+                <br> --}}
+                <a class="btn btn-info" href="{{ route('car.export') }}"> 
+                    <span><i class="fa fa-file-excel-o fa-1x"></i> Export Cars</span>
+                </a>
+                {{-- <button class="btn btn-success">Import File</button> --}}
+            </form>
             <!-- Modal -->
-            @include('partials.car-import-modal')
+            {{-- @include('partials.car-import-modal') --}}
         </div>
     </div>
     <table class="table table-bordered table-hover">

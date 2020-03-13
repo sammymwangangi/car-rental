@@ -17,7 +17,7 @@ class CreateCarsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->text('description');
-            $table->float('price');
+            $table->double('price', 8, 2);
             $table->string('image')->nullable();
             $table->integer('nop');
             $table->bigInteger('category_id')->unsigned();
