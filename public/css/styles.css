@@ -148,3 +148,38 @@ hr.hr-text::before {
             text-decoration: none;
             color: #555;
           }
+
+          .width-auto {
+            width: auto;
+        }
+        
+        .text-lg {
+            font-size: 2rem;
+        }
+        
+        .carousel-indicators li {
+            border: none;
+            background: #ccc;
+        }
+        
+        .carousel-indicators li.active {
+            background: #28a745;
+        }
+
+        #button-addon1 {
+            color: #e70fd5;
+          }
+          
+          footer i {
+            color: #e70fd5;
+          }
+          
+          .form-control::placeholder {
+            font-size: 0.95rem;
+            color: #aaa;
+            font-style: italic;
+          }
+          
+          .form-control.shadow-0:focus {
+            box-shadow: none;
+          }

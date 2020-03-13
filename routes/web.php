@@ -18,11 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('about', function () {
+Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('contact', 'ContactController@show');
+Route::get('/contact', 'ContactController@index')->name('contact.index');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
 
 Route::resource('cars', 'CarController');
 // Route::get('cars', 'CarController@index')->name('cars.index');
@@ -35,6 +36,8 @@ Route::patch('cars/{car}', 'CarController@updateLikes')->name('cars.updateLikes'
 Route::resource('brands', 'BrandController');
 Route::resource('categories', 'CategoryController');
 Route::resource('bookings', 'BookingController');
+// Route::get('bookings', 'BookingController@index')->name('bookings.index');
+// Route::post('bookings', 'BookingController@store')->name('bookings.store');
 // Route::resource('dashboard', 'AdminController');
 Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
 

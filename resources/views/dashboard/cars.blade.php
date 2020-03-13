@@ -2,9 +2,21 @@
 
 @section('body')
 
-
-
 <div class="container">
+    <div class="d-flex justify-content-start">
+        <div class="p-2 flex">
+            <button 
+              id="sidebarCollapse" 
+              type="button" 
+              class="btn btn-light bg-white rounded-pill shadow-sm px-4 mb-4">
+              <i class="fa fa-bars mr-2"></i>
+              <small class="text-uppercase font-weight-bold"></small>
+            </button>
+        </div>
+        <div class="p-2 flex">
+            <h4>Cars</h4>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col pb-2">
@@ -60,7 +72,7 @@
                         <button class="btn btn-info" data-toggle="modal" data-target="#editModal-{{ $car->id }}"> 
                            <i class="fa fa-edit"></i> 
                         </button>
-                        @include('partials.car-edit')
+                        {{-- @include('partials.car-edit') --}}
                     </td>
                     <td>
                         <button class="btn btn-danger">

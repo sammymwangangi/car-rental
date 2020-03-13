@@ -13,28 +13,28 @@
 
     <ul class="nav flex-column bg-white mb-0">
         <li class="nav-item">
-        <a href="/dashboard" class="nav-link text-dark bg-light">
-                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-                    Dashboard
-                </a>
+        <a href="{{url('dashboard')}}" class="{{Request::is('dashboard') ? 'bg-light': ''}} nav-link text-dark">
+            <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+            Dashboard
+        </a>
         </li>
         <li class="nav-item">
-        <a href="{{route('dashboard.cars')}}" class="nav-link text-dark">
-                    <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
-                    Cars
-                </a>
+        <a href="{{route('dashboard.cars')}}" class="{{Request::is('dashboard/cars') ? 'bg-light': ''}} nav-link text-dark">
+            <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+            Cars
+        </a>
         </li>
         <li class="nav-item">
-        <a href="/dashboard/bookings" class="nav-link text-dark">
-                    <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
-                    Bookings
-                </a>
+        <a href="{{url('dashboard/bookings')}}" class="{{Request::is('dashboard/bookings') ? 'bg-light': ''}} nav-link text-dark">
+            <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
+            Bookings
+        </a>
         </li>
         <li class="nav-item">
-        <a href="/dashboard/reports" class="nav-link text-dark">
-                    <i class="fa fa-key mr-3 text-primary fa-fw"></i>
-                    Reports
-                </a>
+        <a href="{{url('dashboard/reports')}}" class="{{Request::is('dashboard/reports') ? 'bg-light': ''}} nav-link text-dark">
+            <i class="fa fa-key mr-3 text-primary fa-fw"></i>
+            Reports
+        </a>
         </li>
     </ul>
 

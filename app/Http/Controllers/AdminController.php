@@ -8,7 +8,8 @@ use App\Car;
 use App\User;
 use App\Brand;
 use App\Category;
-
+use App\Charts\CarReports;
+use Carbon;
 
 class AdminController extends Controller
 {
@@ -25,9 +26,14 @@ class AdminController extends Controller
     public function index()
     {
         $cars = Car::all();
+        $fleet = Car::pluck('likes', 'name');
         $bookings = Booking::all();
         $users = User::all();
-        return view('dashboard.index', compact('cars', 'bookings', 'users'));
+
+        $chart = new CarReports;
+        $chart->labels($fleet->keys());
+        $chart->dataset('Most Rated', 'bar', $fleet->values())->backgroundColor('#e5167a');
+        return view('dashboard.index', compact('cars', 'bookings', 'users', 'chart'));
     }
 
     public function getBookings()
@@ -46,8 +52,37 @@ class AdminController extends Controller
 
     public function reports()
     {
-        $cars = Car::all();
-        return view('dashboard.reports', compact('cars'));
+        $cars = Car::pluck('likes', 'name');
+        // $bookings = Booking::pluck('car_id');
+        // $bookings = Booking::where('created_at','=',Carbon\Carbon::now()->format('d'))->get();
+        // $users = User::all('likes', 'created_at');
+        $today_users = User::whereDate('created_at', today())->count();
+        $yesterday_users = User::whereDate('created_at', today()->subDays(1))->count();
+        $users_2_days_ago = User::whereDate('created_at', today()->subDays(2))->count();
+
+        // $users = User::all('likes', 'created_at');
+        $today_bookings = Booking::whereDate('created_at', today())->count();
+        $yesterday_bookings = Booking::whereDate('created_at', today()->subDays(1))->count();
+        $bookings_2_days_ago = Booking::whereDate('created_at', today()->subDays(2))->count();
+
+        $chart = new CarReports;
+        $chart->labels($cars->keys());
+        $chart->dataset('Most Rated', 'bar', $cars->values())->backgroundColor('#81eab9');
+
+        // $rented = new CarReports;
+        // $rented->labels($bookings->keys());
+        // $rented->dataset('Most Rented', 'line', $bookings->values());
+
+        $rented = new CarReports;
+        $rented->labels(['2 days ago', 'Yesterday', 'Today']);
+        $rented->dataset('Booking Reports', 'bar', [$bookings_2_days_ago, $yesterday_bookings, $today_bookings])->options([
+    'backgroundColor' => '#f4f767']);
+
+        $user = new CarReports;
+        $user->labels(['2 days ago', 'Yesterday', 'Today']);
+        $user->dataset('User Reports', 'line', [$users_2_days_ago, $yesterday_users, $today_users]);
+
+        return view('dashboard.reports', compact('cars', 'chart', 'rented', 'user'));
     }
 
     /**

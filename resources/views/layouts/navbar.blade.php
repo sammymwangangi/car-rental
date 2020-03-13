@@ -14,13 +14,13 @@
                     <a class="nav-link" href="{{url('/')}}"><i class="fa fa-home"></i> HOME</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="{{url('about')}}"><i class="fa fa-globe"></i> ABOUT</a>
+                <a class="nav-link" href="{{url('/about')}}"><i class="fa fa-globe"></i> ABOUT</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" href="{{ route('cars.index') }}"><i class="fa fa-car"></i> CARS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link uppercase" href="{{url('contact')}}"><i class="fa fa-phone"></i> CONTACT US</a>
+                    <a class="nav-link uppercase" href="{{ route('contact.index') }}"><i class="fa fa-phone"></i> CONTACT US</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link uppercase" href="{{ url('/dashboard') }}"><i class="fa fa-th-large"></i> DASHBOARD</a>

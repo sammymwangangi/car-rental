@@ -2,27 +2,23 @@
 
 @section('content')
     <div class="container">
-        <table class="table">
+        <h2> My Bookings </h2>
+        <table class="table table-bordered p-4">
             <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Car Name</th>
-                <th scope="col">User Name</th>
-                <th scope="col">Pickup Location</th>
-                <th scope="col">Pickup Date</th>
-                <th scope="col">Pickup Time</th>
-                <th scope="col">Drop-Off Location</th>
-                <th scope="col">Drop-Off Date</th>
-                <th scope="col">Drop-Off Time</th>
-              </tr>
+                <tr>
+                    <th scope="col">Car Name</th>
+                    <th scope="col">Pickup Location</th>
+                    <th scope="col">Pickup Date</th>
+                    <th scope="col">Pickup Time</th>
+                    <th scope="col">Drop-Off Location</th>
+                    <th scope="col">Drop-Off Date</th>
+                    <th scope="col">Drop-Off Time</th>
+                </tr>
             </thead>
             <tbody>
-                @forelse ($bookings as $booking)
-                    
+                @forelse ($bookings as $booking)                   
                     <tr>
-                    <th scope="row">{{$booking->id}}</th>
                         <td>{{$booking->car->name}}</td>
-                        <td>{{$booking->user->name}}</td>
                         <td>{{$booking->pickup_loc}}</td>
                         <td>{{$booking->pickup_date}}</td>
                         <td>{{$booking->pickup_time}}</td>

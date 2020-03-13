@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Booking;
 use App\Car;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
@@ -18,14 +16,7 @@ class BookingController extends Controller
      */
     public function index()
     {
-        // $car = Car::find($car);
-        $bookings = Booking::all();
-        // $bookings = Booking::has('car')->get();
-        // $bookings = DB::table('bookings')
-        //     ->join('cars', 'bookings.car_id', 'cars.id')
-        //     ->select('bookings.*', 'cars.name')
-        //     ->get();
-            
+        $bookings = Booking::where('user_id', Auth::id())->paginate(5);
         return view('bookings.index', compact('bookings'));
 
     }
@@ -35,9 +26,9 @@ class BookingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Car $car)
     {
-        //
+        return view('bookings.create');
     }
 
     /**
@@ -48,52 +39,54 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'car_id' => 'required',
-        //     'user_id' => 'required',
-        //     'pickup_loc' => 'required',
-        //     'drop_loc' => 'required',
-        //     'pickup_date' => 'required',
-        //     'pickup_time' => 'required',
-        //     'drop_date' => 'required',
-        //     'drop_time' => 'required',
-        // ]);
-        // if ($validator->fails()) {
-        //     return redirect()->back()->with('error', 'Whoops! An error occured during sign in, fill all required fields!');
-        // }
-        // try {
-        //     Booking::create(array_merge($request->all()));
-        //     return redirect()->back()->with('success', 'Car has been booked successfully');
-        // } catch (\Exception $exception) {
-        //     return redirect()->back()->with('error', 'Whoops!, Something went wrong during submission, Please try again.');
-        // }
-
-        // $r = request();
     	$this->validate($request, [
 
     		'car_id' => 'required',
             'pickup_loc' => 'required',
             'drop_loc' => 'required',
-            'pickup_date' => 'required',
+            'pickup_date' => 'required|date',
             'pickup_time' => 'required',
-            'drop_date' => 'required',
+            'drop_date' => 'required|date',
             'drop_time' => 'required',
-    	]);
+        ]);
 
-    	$car = Car::create([
-    		'car_id' => $request->car_id,
+        // $validator = Validator::make($request->all(), [
+        //     'pickup_date' => [
+        //         'required',
+        //         'date_format:"Y-m-d H:i:s"',
+        //         function($attribute, $value, $fail) {
+        //             $pickupDate = Carbon::parse($value);
+        
+        //             // is date < now?
+        //             if ($pickupDate->lt(now()) {
+        //                 return $fail($attribute.' must be on or after ' . now()->toDateTimeString());
+        //             }
+        
+        //             // is time between 5pm and 9:30pm? (Can you pickup 7 days/week?)
+        //             $pickupTime = Carbon::createFromTime($pickupDate->hour, $pickupDate->minute, $pickupDate->second);
+        //             $earliestTime = Carbon::createFromTimeString('17:00:00');
+        //             $latestTime = Carbon::createFromTimeString('21:30:00');
+        
+        //             if ( ! $pickupTime->between($earliestTime, $latestTime)) {
+        //                 return $fail($attribute.' must be between 5pm and 9:30pm');
+        //             }
+        //         },
+        //     ],
+        // ]);
+
+        $booking = Booking::create([
+
     		'pickup_loc' => $request->pickup_loc,
     		'drop_loc' => $request->drop_loc,
     		'pickup_date' => $request->pickup_date,
     		'pickup_time' => $request->pickup_time,
     		'drop_date' => $request->drop_date,
     		'drop_time' => $request->drop_time,
+    		'car_id' => $request->car_id,
     		'user_id' => Auth::id(),
-
     	]);
 
-        // return redirect()->route('discussion', ['slug' => $discussion->slug ]);
-        return redirect('/bookings')->with('success', 'Car has been booked successfully');
+        return redirect(route('bookings.index'))->with('success', 'Car has been booked successfully');
     }
 
     /**
