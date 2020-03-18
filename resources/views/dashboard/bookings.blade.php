@@ -59,7 +59,7 @@
                   </tr>
               @empty
                   <tr>
-                  <h4>No Bookings Available, go to <a href="{{routes('cars.index')}}">cars</a> to book one</h4>
+                  <h4>No Bookings Available, go to <a href="{{route('cars.index')}}">cars</a> to book one</h4>
                   </tr>
               @endforelse
           </tbody>
