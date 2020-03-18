@@ -83,7 +83,11 @@
                         </div><!-- /.modal -->
                         <!-- ====================End Toggle status Modal===========================  -->
                   </tr>
-              @endforeach
+              @empty
+                  <tr>
+                  <h4>No Bookings Available, go to <a href="{{route('cars.index')}}">cars</a> to book one</h4>
+                  </tr>
+              @endforelse
           </tbody>
     </table>
 </div>
