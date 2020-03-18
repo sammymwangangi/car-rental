@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('access-denied', function () {
+    return view('errors.403');
+});
+
 Route::get('/about', function () {
     return view('about');
 });
@@ -32,14 +36,16 @@ Route::patch('cars/{car}', 'CarController@updateLikes')->name('cars.updateLikes'
 Route::resource('brands', 'BrandController');
 Route::resource('categories', 'CategoryController');
 Route::resource('bookings', 'BookingController');
-Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
-
-Route::get('dashboard/cars', 'AdminController@getCars')->name('dashboard.cars');
-Route::get('dashboard/bookings', 'AdminController@getBookings')->name('dashboard.bookings');
-Route::get('dashboard/payments', 'AdminController@payments')->name('dashboard.payments');
-Route::get('dashboard/bookings/toggle-status/{id}', 'AdminController@toggle_status')->name('bookings.status');
-Route::get('dashboard/reports', 'AdminController@reports')->name('dashboard.reports');
 
 Auth::routes();
+
+Route::prefix('dashboard')->middleware('auth')->group(function(){
+    Route::get('/', 'AdminController@index')->name('dashboard.index')->middleware(['permission:CREATE-CAR,require_all']);
+    Route::get('/cars', 'AdminController@getCars')->name('dashboard.cars')->middleware(['permission:CREATE-CAR,require_all']);
+    Route::get('/bookings', 'AdminController@getBookings')->name('dashboard.bookings')->middleware(['permission:CREATE-CAR,require_all']);
+    Route::get('/payments', 'AdminController@payments')->name('dashboard.payments')->middleware(['permission:CREATE-CAR,require_all']);
+    Route::get('/bookings/toggle-status/{id}', 'AdminController@toggle_status')->name('bookings.status')->middleware(['permission:CREATE-CAR,require_all']);
+    Route::get('/reports', 'AdminController@reports')->name('dashboard.reports')->middleware(['permission:CREATE-CAR,require_all']);
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
