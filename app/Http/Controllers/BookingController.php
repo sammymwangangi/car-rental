@@ -132,7 +132,7 @@ class BookingController extends Controller
     public function destroy(Booking $booking)
     {
         $booking->delete();
-        return redirect(route('cars.index'))->with('info', 'Booking has been cancelled!');
+        return redirect()->back()->with('info', 'Booking has been cancelled!');
         // try {
         //     $delete = Car::find($booking);
         //     $delete->delete();

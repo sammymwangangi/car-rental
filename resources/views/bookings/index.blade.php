@@ -18,7 +18,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($bookings as $booking)                   
+                @forelse ($bookings as $booking)                   
                     <tr>
                         <td>{{$booking->car->name}}</td>
                         <td>KSH.{{$booking->car->price}}</td>
@@ -37,13 +37,18 @@
                         </td>
                     </tr>
                 @empty
-                    <tr>
-                    <h4>No Bookings Available, go to <a href="{{route('cars.index')}}">cars</a> to book one</h4>
-                    </tr>
+                <div class="alert alert-danger text-center" role="alert">
+                    No Bookings Available, go to <a href="{{route('cars.index')}}">cars</a> to book one
+                </div>
                 @endforelse
             </tbody>
         </table>
-
-    <a class="btn btn-info" href="{{route('cars.index')}}">Book another car</a>
+        @if (count($bookings) === 1)
+            <a class="btn btn-info" href="{{route('cars.index')}}">Book another car</a>
+        @elseif (count($bookings) > 1)
+            <a class="btn btn-info" href="{{route('cars.index')}}">Book another car</a>
+        @else
+            
+        @endif
     </div>
 @endsection

@@ -35,7 +35,7 @@
             </tr>
         </thead>
           <tbody>
-              @foreach ($bookings as $booking)
+              @forelse ($bookings as $booking)
                   
                   <tr>
                   <th scope="row">{{$booking->id}}</th>
@@ -85,7 +85,9 @@
                   </tr>
               @empty
                   <tr>
-                  <h4>No Bookings Available, go to <a href="{{route('cars.index')}}">cars</a> to book one</h4>
+                    <div class="alert alert-danger text-center" role="alert">
+                        No Bookings Available!
+                    </div>
                   </tr>
               @endforelse
           </tbody>

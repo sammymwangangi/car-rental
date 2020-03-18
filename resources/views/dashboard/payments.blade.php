@@ -27,7 +27,7 @@
             </tr>
         </thead>
             <tbody>
-                @foreach ($bookings as $booking)
+                @forelse ($bookings as $booking)
                     <tr>
                         @if($booking->is_approved==1)
                             <td>{{$booking->user->name}}</td>
@@ -39,7 +39,11 @@
                         </div>
                         @endif
                     </tr>
-                @endforeach
+                    @empty
+                    <div class="alert alert-danger text-center" role="alert">
+                        No Payments Available!
+                    </div>
+                @endforelse
             </tbody>
     </table>
 </div>
