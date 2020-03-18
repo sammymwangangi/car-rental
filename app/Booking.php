@@ -14,7 +14,8 @@ class Booking extends Model
         'pickup_date',
         'pickup_time',
         'drop_date',
-        'drop_time'
+        'drop_time',
+        'is_approved'
     ];
 
     public function user(){

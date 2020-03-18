@@ -37,6 +37,8 @@ Route::get('dashboard', 'AdminController@index')->name('dashboard.index');
 
 Route::get('dashboard/cars', 'AdminController@getCars')->name('dashboard.cars');
 Route::get('dashboard/bookings', 'AdminController@getBookings')->name('dashboard.bookings');
+Route::get('dashboard/payments', 'AdminController@payments')->name('dashboard.payments');
+Route::get('dashboard/bookings/toggle-status/{id}', 'AdminController@toggle_status')->name('bookings.status');
 Route::get('dashboard/reports', 'AdminController@reports')->name('dashboard.reports');
 
 Auth::routes();

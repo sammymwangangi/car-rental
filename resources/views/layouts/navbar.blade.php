@@ -25,6 +25,9 @@
                 <li class="nav-item">
                 <a class="nav-link uppercase" href="{{ url('/dashboard') }}"><i class="fa fa-th-large"></i> DASHBOARD</a>
                 </li>
+                <li class="nav-item">
+                <a class="nav-link uppercase" href="{{ url('/bookings') }}"><i class="fa fa-book"></i> My Bookings</a>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->

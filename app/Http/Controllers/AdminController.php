@@ -42,6 +42,12 @@ class AdminController extends Controller
         return view('dashboard.bookings', compact('bookings'));
     }
 
+    public function payments()
+    {
+        $bookings = Booking::all();
+        return view('dashboard.payments', compact('bookings'));
+    }
+
     public function getCars()
     {
         $cars = Car::all();
@@ -83,6 +89,23 @@ class AdminController extends Controller
         $user->dataset('User Reports', 'line', [$users_2_days_ago, $yesterday_users, $today_users]);
 
         return view('dashboard.reports', compact('cars', 'chart', 'rented', 'user'));
+    }
+
+    // ---------------- Toggle status ----------
+    public function toggle_status($id)
+    {
+        //dd($id);
+        try {
+            $status = Booking::where('id', $id)->first()->is_approved;
+            if ($status == 1) {
+                Booking::where('id', $id)->update(['is_approved' => 0]);
+            } else {
+                Booking::where('id', $id)->update(['is_approved' => 1]);
+            }
+            return redirect()->back()->with('info', 'Booking status has been updated!');
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', 'Whoops!, Something went wrong when updating status, Please try again.');
+        }
     }
 
     /**

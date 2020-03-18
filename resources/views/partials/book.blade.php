@@ -12,20 +12,22 @@
     </div>
     <div class="form-group">
       <label for="pickup_time">Pickup Time</label>
-      <input type="text" class="form-control" id="pickup_time" name="pickup_time" placeholder="1234 Main St">
+      <input type="time" class="form-control" id="pickup_time" name="pickup_time" placeholder="1234 Main St">
     </div>
     <div class="form-group">
       <label for="drop_time">Drop Time</label>
-      <input type="text" class="form-control" id="drop_time" name="drop_time" placeholder="Apartment, studio, or floor">
+      <input type="time" class="form-control" id="drop_time" name="drop_time" placeholder="Apartment, studio, or floor">
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="pickup_date">Pickup Date</label>
-        <input type="text" class="form-control" id="pickup_date" name="pickup_date">
+        <input type="date" class="form-control" id="pickup_date" max="3000-12-31" 
+        min="1000-01-01" name="pickup_date">
       </div>
       <div class="form-group col-md-4">
         <label for="drop_date">Drop Date</label>
-        <input type="text" class="form-control" id="drop_date" name="drop_date">
+        <input type="date" class="form-control" id="drop_date" max="3000-12-31" 
+        min="1000-01-01" name="drop_date">
       </div>
     </div>
     <input type="hidden" name="car_id" value="{{$car->id}}">

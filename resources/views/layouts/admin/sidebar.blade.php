@@ -25,7 +25,7 @@
         </a>
         </li>
         <li class="nav-item">
-        <a href="{{url('dashboard/bookings')}}" class="{{Request::is('dashboard/bookings') ? 'bg-light': ''}} nav-link text-dark">
+        <a href="{{route('dashboard.bookings')}}" class="{{Request::is('dashboard/bookings') ? 'bg-light': ''}} nav-link text-dark">
             <i class="fa fa-cubes mr-3 text-primary fa-fw"></i>
             Bookings
         </a>
@@ -42,10 +42,10 @@
 
     <ul class="nav flex-column bg-white mb-0">
         <li class="nav-item">
-        <a href="#" class="nav-link text-dark">
-                    <i class="fa fa-cog mr-3 text-primary fa-fw"></i>
-                    Settings
-                </a>
+        <a href="{{url('dashboard/payments')}}" class="{{Request::is('dashboard/payments') ? 'bg-light': ''}} nav-link text-dark">
+            <i class="fa fa-money mr-3 text-primary fa-fw"></i>
+            Payments
+        </a>
         </li>
     </ul>
 </div>
