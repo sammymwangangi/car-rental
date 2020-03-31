@@ -1,5 +1,6 @@
 <?php
 
+use RealRashid\SweetAlert\Facades\Alert;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +15,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    Alert::success('Success Title', 'Success Message');
     return view('welcome');
 });
 
@@ -37,7 +39,7 @@ Route::resource('brands', 'BrandController');
 Route::resource('categories', 'CategoryController');
 Route::resource('bookings', 'BookingController');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/', 'AdminController@index')->name('dashboard.index')->middleware(['permission:CREATE-CAR,require_all']);
@@ -48,4 +50,4 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/reports', 'AdminController@reports')->name('dashboard.reports')->middleware(['permission:CREATE-CAR,require_all']);
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');

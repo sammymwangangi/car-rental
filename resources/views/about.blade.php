@@ -86,7 +86,6 @@
                     </div>
                 </div>
                 <!-- End-->
-        
                 <!-- Team item-->
                 <div class="col-xl-3 col-sm-6 mb-5">
                     <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834133/avatar-1_s02nlg.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
