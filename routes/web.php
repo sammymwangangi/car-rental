@@ -41,6 +41,9 @@ Route::resource('bookings', 'BookingController');
 
 Auth::routes(['verify' => true]);
 
+Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
+Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
+
 Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/', 'AdminController@index')->name('dashboard.index')->middleware(['permission:CREATE-CAR,require_all']);
     Route::get('/cars', 'AdminController@getCars')->name('dashboard.cars')->middleware(['permission:CREATE-CAR,require_all']);
