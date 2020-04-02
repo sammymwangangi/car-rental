@@ -77,13 +77,13 @@
             <div class="col-8">
                 <h1 class="display-4">We are Best Car Rental Company to Find Car</h1>
                 <h4>
-                    Lorem ipsum dolor sit amet, sit lectus risus dis aptent, vitae odio nec. Justo volutpat rutrum purus, 
-                    augue cursus, turpis felis nonummy nisl. Vel justrus sed volutpat, tristique tempor scelerisque dictum dui donec urna, 
+                    Lorem ipsum dolor sit amet, sit lectus risus dis aptent, vitae odio nec. Justo volutpat rutrum purus,
+                    augue cursus, turpis felis nonummy nisl. Vel justrus sed volutpat, tristique tempor scelerisque dictum dui donec urna,
                     consequat scelerisque eu ut, ornare ut. Rutrum eget
                 </h4>
             </div>
             <div class="col-4">
-                <img src="{{asset ('images/car2.png')}}" class="img-fluid" alt="car">
+                <img src="{{asset ('images/cars/car.svg')}}" class="img-fluid" alt="car">
             </div>
         </div>
 
@@ -111,7 +111,7 @@
                                 </span>
                             </h4>
                         @endif
-                        <likes 
+                        <likes
                             :likes="{{$car->likes}}"
                             :car-id="{{ $car->id }}"
                         >
@@ -123,8 +123,8 @@
                     <p class="card-text">{{str_limit($car ->description, $limit = 100, $end = '...')}}</p>
                 </div>
                 <div class=" d-flex border-0 justify-content-around card-footer">
-                    <small class="mt-2"><i class="fa fa-bookmark text-primary"></i> {{$car->category->name}}</small> 
-                    <small class="mt-2"><i class="fa fa-car text-warning"></i> {{$car->brand->name}}</small> 
+                    <small class="mt-2"><i class="fa fa-bookmark text-primary"></i> {{$car->category->name}}</small>
+                    <small class="mt-2"><i class="fa fa-car text-warning"></i> {{$car->brand->name}}</small>
                     <small class="mt-2"><i class="fa fa-users text-danger"></i> {{$car->nop}} Passengers</small>
                 </div>
                 <div class=" d-flex justify-content-between card-footer">
@@ -136,9 +136,9 @@
                     @endif
                 </div>
             </div>
-            
+
             @empty
-                <h4>No Cars Found!</h4>    
+                <h4>No Cars Found!</h4>
             @endforelse
         </div>
 
@@ -158,8 +158,8 @@
                                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                                 </ol>
-        
-        
+
+
                                 <!-- Bootstrap inner [slides]-->
                                 <div class="carousel-inner px-5 pb-4">
                                     <!-- Carousel slide-->
@@ -175,7 +175,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <!-- Carousel slide-->
                                     <div class="carousel-item">
                                         <div class="media"><img class="rounded-circle img-thumbnail" src="https://res.cloudinary.com/mhmd/image/upload/v1579676165/avatar-3_hdxocq.jpg" alt="" width="75">
@@ -189,7 +189,7 @@
                                             </div>
                                         </div>
                                     </div>
-        
+
                                     <!-- Carousel slide-->
                                     <div class="carousel-item">
                                         <div class="media"><img class="rounded-circle img-thumbnail" src="https://res.cloudinary.com/mhmd/image/upload/v1579676165/avatar-2_gibm2s.jpg" alt="" width="75">
@@ -204,8 +204,8 @@
                                         </div>
                                     </div>
                                 </div>
-        
-        
+
+
                                 <!-- Bootstrap controls [dots]-->
                                 <a class="carousel-control-prev width-auto" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                     <i class="fa fa-angle-left text-dark text-lg"></i>

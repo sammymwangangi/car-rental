@@ -13,6 +13,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 use Illuminate\Support\Facades\Route;
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::get('/', function () {
     Alert::success('Success Title', 'Success Message');
@@ -37,7 +38,7 @@ Route::get('/', 'CarController@getCars')->name('cars.getCars');
 Route::patch('cars/{car}', 'CarController@updateLikes')->name('cars.updateLikes');
 Route::resource('brands', 'BrandController');
 Route::resource('categories', 'CategoryController');
-Route::resource('bookings', 'BookingController');
+Route::resource('bookings', 'BookingController')->middleware(['auth', 'verified']);
 
 Auth::routes(['verify' => true]);
 
@@ -53,4 +54,10 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/reports', 'AdminController@reports')->name('dashboard.reports')->middleware(['permission:CREATE-CAR,require_all']);
 });
 
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+//**************Profiles Routes ****************************
+Route::prefix('/profile')->middleware('auth')->group(function(){
+    Route::get('/passwordChange','ProfileController@changePassword');
+    Route::post('/passwordChange/{id}','ProfileController@postChangePassword');
+    Route::get('/editProfile/{id}','ProfileController@editprofile');
+    Route::post('/editprofile/{id}','ProfileController@posteditprofile');
+});
