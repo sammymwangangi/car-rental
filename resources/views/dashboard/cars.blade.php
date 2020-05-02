@@ -89,10 +89,10 @@
                         <td>Not Available</td>
                     @endif
                     <td>
-                        <button class="btn btn-info" data-toggle="modal" data-target="#editModal-{{ $car->id }}"> 
+                        <button class="btn btn-info" data-toggle="modal" data-target="#editModal{{ $car->id }}"> 
                            <i class="fa fa-edit"></i> 
                         </button>
-                        {{-- @include('partials.car-edit') --}}
+                        @include('partials.car-edit')
                     </td>
                     <td>
                         <button class="btn btn-danger">
