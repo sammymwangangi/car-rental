@@ -1,8 +1,8 @@
 <template>
     <div class="d-flex flex-column">
         <button type="button" class="btn btn-primary">
-  Notifications <span class="badge bg-secondary">4</span>
-</button>
+          Notifications <span class="badge bg-secondary">4</span>
+        </button>
         <footer class="footer">
             <div>
             <a href="https://coreui.io">CoreUI</a>

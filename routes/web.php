@@ -19,6 +19,9 @@ Route::get('/', function () {
     Alert::success('Success Title', 'Success Message');
     return view('welcome');
 });
+Route::get('/test', function () {
+    return view('test');
+});
 
 Route::get('access-denied', function () {
     return view('errors.403');

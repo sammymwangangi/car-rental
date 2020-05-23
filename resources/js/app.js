@@ -23,6 +23,7 @@ window.Vue = require('vue');
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('likes', require('./components/likes.vue').default);
 Vue.component('footer-component', require('./components/FooterComponent.vue').default);
+Vue.component('test-component', require('./components/TestComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -141,7 +141,7 @@
                 <h4>No Cars Found!</h4>
             @endforelse
         </div>
-
+<test-component></test-component>
         <div class="p-4">
             <hr data-content="TESTIMONIALS" class="hr-text">
         </div>
