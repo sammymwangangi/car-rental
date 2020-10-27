@@ -75,7 +75,11 @@
                 <tr>
                     <th scope="row">{{$car->id}}</th>
                     <td>
-                        <img src="{{asset($car->image)}}" style="width:50px; heigh:50px;" alt="car-image">
+                        @if($car->image != 'car2.png')
+                            <img src="/images/{{ $car->image }}" class="img-fluid" style="width:50px; heigh:50px;" alt="event">
+                        @else
+                            <img src="{{asset($car->image)}}" class="img-fluid" style="width:50px; heigh:50px;" alt="service">
+                        @endif
                     </td>
                     <td>{{$car->name}}</td>
                     <td>{{$car->price}}</td>

@@ -8,7 +8,7 @@
         </button>
         </div>
         <div class="modal-body">
-            <form action="{{route('cars.update', ['car' => $car->id])}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('cars.show', ['car' => $car->id])}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-row">
