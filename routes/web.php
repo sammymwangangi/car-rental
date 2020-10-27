@@ -49,12 +49,12 @@ Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
 
 Route::prefix('dashboard')->middleware('auth')->group(function(){
-    Route::get('/', 'AdminController@index')->name('dashboard.index')->middleware(['permission:CREATE-CAR,require_all']);
-    Route::get('/cars', 'AdminController@getCars')->name('dashboard.cars')->middleware(['permission:CREATE-CAR,require_all']);
-    Route::get('/bookings', 'AdminController@getBookings')->name('dashboard.bookings')->middleware(['permission:CREATE-CAR,require_all']);
-    Route::get('/payments', 'AdminController@payments')->name('dashboard.payments')->middleware(['permission:CREATE-CAR,require_all']);
-    Route::get('/bookings/toggle-status/{id}', 'AdminController@toggle_status')->name('bookings.status')->middleware(['permission:CREATE-CAR,require_all']);
-    Route::get('/reports', 'AdminController@reports')->name('dashboard.reports')->middleware(['permission:CREATE-CAR,require_all']);
+    Route::get('/', 'AdminController@index')->name('dashboard.index');
+    Route::get('/cars', 'AdminController@getCars')->name('dashboard.cars');
+    Route::get('/bookings', 'AdminController@getBookings')->name('dashboard.bookings');
+    Route::get('/payments', 'AdminController@payments')->name('dashboard.payments');
+    Route::get('/bookings/toggle-status/{id}', 'AdminController@toggle_status')->name('bookings.status');
+    Route::get('/reports', 'AdminController@reports')->name('dashboard.reports');
 });
 
 //**************Profiles Routes ****************************
