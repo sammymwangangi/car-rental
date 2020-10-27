@@ -20,11 +20,9 @@
                 <a class="nav-link" href="{{ route('cars.index') }}"><i class="fa fa-car"></i> CARS</a>
                 </li>
                 @auth()
-                    @permission(['CREATE-CAR'])
                 <li class="nav-item">
                 <a class="nav-link uppercase" href="{{ url('/dashboard') }}"><i class="fa fa-th-large"></i> DASHBOARD</a>
                 </li>
-                @endpermission
                 <li class="nav-item">
                 <a class="nav-link uppercase" href="{{ url('/bookings') }}"><i class="fa fa-book"></i> My Bookings</a>
                 </li>

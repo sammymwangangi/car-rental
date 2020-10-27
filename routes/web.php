@@ -48,7 +48,7 @@ Auth::routes(['verify' => true]);
 Route::get('auth/google', 'Auth\GoogleController@redirectToGoogle');
 Route::get('auth/google/callback', 'Auth\GoogleController@handleGoogleCallback');
 
-Route::prefix('dashboard')->middleware('auth')->group(function(){
+Route::group(['prefix' => 'dashboard', 'middleware' => ['role:admin']], function() {
     Route::get('/', 'AdminController@index')->name('dashboard.index');
     Route::get('/cars', 'AdminController@getCars')->name('dashboard.cars');
     Route::get('/bookings', 'AdminController@getBookings')->name('dashboard.bookings');
@@ -56,6 +56,11 @@ Route::prefix('dashboard')->middleware('auth')->group(function(){
     Route::get('/bookings/toggle-status/{id}', 'AdminController@toggle_status')->name('bookings.status');
     Route::get('/reports', 'AdminController@reports')->name('dashboard.reports');
 });
+
+// Route::group(['prefix' => 'dashboard', 'middleware' => ['role:admin']], function() {
+//     Route::get('/', 'AdminController@welcome');
+//     Route::get('/manage', ['middleware' => ['permission:manage-admins'], 'uses' => 'AdminController@manageAdmins']);
+// });
 
 //**************Profiles Routes ****************************
 Route::prefix('/profile')->middleware('auth')->group(function(){
